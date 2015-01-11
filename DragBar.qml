@@ -65,13 +65,19 @@ Control {
             drag.axis: Drag.XAxis
             drag.maximumX: 0
             drag.minimumX: -backboard.width
+            property real oldx
+
+            onPressed: {
+                oldx = mouse.x
+            }
 
             onReleased: {
                 root.forceActiveFocus()
+                console.log("dragRec.x:"+dragRec.x)
                 if (!dragRec.isOpen) {
                     if (dragRec.x !== 0 && dragRec.x>-root.boundary) {
                         dropClose.start()
-                    }else {
+                    }else if (dragRec.x !== 0 || oldx===mouse.x){
                         dragRec.isOpen = true
                     }
                 }else {
