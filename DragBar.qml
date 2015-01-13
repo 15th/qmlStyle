@@ -65,19 +65,19 @@ Control {
             drag.axis: Drag.XAxis
             drag.maximumX: 0
             drag.minimumX: -backboard.width
-            property real oldx
+            property point oldPosition
 
             onPressed: {
-                oldx = mouse.x
+                oldPosition = Qt.point(mouse.x, mouse.y)
             }
 
             onReleased: {
+                var nowPosition = Qt.point(mouse.x, mouse.y)
                 root.forceActiveFocus()
-                console.log("dragRec.x:"+dragRec.x)
                 if (!dragRec.isOpen) {
-                    if (dragRec.x !== 0 && dragRec.x>-root.boundary) {
+                    if (dragRec.x !== 0 && dragRec.x>-root.boundary && nowPosition.x-oldPosition.x>=nowPosition.y-oldPosition.y) {
                         dropClose.start()
-                    }else if (dragRec.x !== 0 || oldx===mouse.x){
+                    }else if (dragRec.x !== 0 || oldPosition.x===mouse.x && nowPosition.x-oldPosition.x<nowPosition.y-oldPosition.y){
                         dragRec.isOpen = true
                     }
                 }else {
