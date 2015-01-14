@@ -77,8 +77,10 @@ Control {
                 if (!dragRec.isOpen) {
                     if (dragRec.x !== 0 && dragRec.x>-root.boundary && nowPosition.x-oldPosition.x>=nowPosition.y-oldPosition.y) {
                         dropClose.start()
-                    }else if (dragRec.x !== 0 || oldPosition.x===mouse.x && nowPosition.x-oldPosition.x<nowPosition.y-oldPosition.y){
+                    }else if ((dragRec.x !== 0 && nowPosition.x-oldPosition.x<nowPosition.y-oldPosition.y) || oldPosition.x===mouse.x ){
                         dragRec.isOpen = true
+                    }else {
+                        dropClose.start()
                     }
                 }else {
                     dragRec.isOpen = false
