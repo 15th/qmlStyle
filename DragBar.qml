@@ -75,7 +75,7 @@ Control {
                 var nowPosition = Qt.point(mouse.x, mouse.y)
                 root.forceActiveFocus()
                 if (!dragRec.isOpen) {
-                    if ((dragRec.x !== 0 && nowPosition.x-oldPosition.x<nowPosition.y-oldPosition.y) || oldPosition.x===mouse.x ){
+                    if ((dragRec.x !== 0 && dragRec.x<=-root.boundary && nowPosition.x-oldPosition.x<nowPosition.y-oldPosition.y) || oldPosition.x===mouse.x ){
                         dragRec.isOpen = true
                     }else {
                         dropClose.start()
