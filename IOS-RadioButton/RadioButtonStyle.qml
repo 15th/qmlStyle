@@ -2,38 +2,45 @@ import QtQuick 2.4
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Private 1.0
 
+
 Style {
     id:style
     property real bkBorderWidth: 2 //背景边框宽度
+    property real btnBorderWidth: 1 //按钮边框宽度
+
+    property color borderColor: "#B4B4B4" //边框颜色
+    property color checkedColor: "#4BD962" //选中颜色
+    property color defaultColor: "#FFFFFF" //未选中颜色
 
     property Component upper: Rectangle {
         height: control.height-style.bkBorderWidth*2
         width: control.pressed ? 4/3*height : height
         radius: height/2
-        color: "white"
-        border.width: 1
-        border.color: "gray"
+        color: style.defaultColor
+        border.width: style.btnBorderWidth
+        border.color: style.borderColor
 
         Behavior on width {
             PropertyAnimation {
             }
         }
+
     }
 
     property Component mask: Rectangle {
         height: control.height-style.bkBorderWidth*2
         width: parent.width
         radius: height/2
-        color: control.checked ? "green" : "gray"
+        color: control.checked ? style.checkedColor : style.borderColor
     }
 
     property Component background: Rectangle {
         height: control.height
         width: control.width
         radius: height/2
-        color: "white"
+        color: style.defaultColor
         border.width: control.checked || (control.pressed && !control.checked) ? height : style.bkBorderWidth
-        border.color: control.checked ? "green" : "gray"
+        border.color: control.checked ? style.checkedColor : style.borderColor
 
         Behavior on border.width {
             PropertyAnimation {
