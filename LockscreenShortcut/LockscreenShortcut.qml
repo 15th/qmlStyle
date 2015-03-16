@@ -53,6 +53,12 @@ Control {
         }
     }
 
+    onActiveFocusChanged: {
+        if (!activeFocus) {
+            mousearea.reset()
+        }
+    }
+
     /*! 指针小圆球loader */
     Loader {
         id: pointer
@@ -158,6 +164,7 @@ Control {
         property bool movingActive: false
 
         onPressed: {
+            root.forceActiveFocus()
             movingActive = isInCircle(mouse)
         }
 
