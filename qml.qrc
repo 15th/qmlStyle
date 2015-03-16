@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>LockscreenShortcut/LockscreenShortcut.qml</file>
+        <file>LockscreenShortcut/LockscreenShortcutStyle.qml</file>
+        <file>IOS-RadioButton/RadioButtonStyle.qml</file>
+        <file>IOS-RadioButton/RadioButton.qml</file>
+        <file>ColorPalette/ColorPalette.qml</file>
+        <file>ColorPalette/ColorTable.qml</file>
+        <file>DragBar/DragBar.qml</file>
+        <file>DragBar/DragBarStyle.qml</file>
+        <file>Base/LauncherList.qml</file>
+        <file>Base/SimpleLauncherDelegate.qml</file>
+        <file>DragBar/MenuDragBar.qml</file>
+        <file>IOS-RadioButton/MenuRadioButton.qml</file>
+        <file>LockscreenShortcut/MenuLockscreenShortcut.qml</file>
+    </qresource>
+</RCC>
