@@ -121,7 +121,7 @@ Rectangle {
 
         Item {
             id: back
-            width: 20
+            width: 30
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 2
             anchors.left: parent.left
@@ -137,7 +137,7 @@ Rectangle {
                 id: mouse
                 hoverEnabled: true
                 anchors.centerIn: parent
-                width: 38
+                width: 50
                 height: 31
                 anchors.verticalCenterOffset: -1
                 onClicked: ei.exampleUrl = ""
