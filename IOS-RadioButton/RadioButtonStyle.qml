@@ -5,8 +5,8 @@ import QtQuick.Controls.Private 1.0
 
 Style {
     id:style
-    property real bkBorderWidth: 2 //背景边框宽度
-    property real btnBorderWidth: 1 //按钮边框宽度
+    property real bkBorderWidth: 1 //背景边框宽度
+    property real btnBorderWidth: 0.75 //按钮边框宽度
 
     property color borderColor: "#B4B4B4" //边框颜色
     property color checkedColor: "#4BD962" //选中颜色

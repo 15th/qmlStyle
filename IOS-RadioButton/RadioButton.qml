@@ -18,7 +18,10 @@ Control {
     MouseArea {
         id: mousearea
         anchors.fill: parent
-        onClicked: root.checked = !root.checked
+        onClicked: {
+            root.forceActiveFocus()
+            root.checked = !root.checked
+        }
     }
 
     Loader {
@@ -55,7 +58,10 @@ Control {
             drag.axis: Drag.XAxis
             drag.maximumX: root.width-upperloader.width-upperloader.bkBorderWidth
             drag.minimumX: upperloader.bkBorderWidth
-            onClicked: root.checked = !root.checked
+            onClicked: {
+                root.forceActiveFocus()
+                root.checked = !root.checked
+            }
         }
     }
 }
