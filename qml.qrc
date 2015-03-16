@@ -14,5 +14,9 @@
         <file>DragBar/MenuDragBar.qml</file>
         <file>IOS-RadioButton/MenuRadioButton.qml</file>
         <file>LockscreenShortcut/MenuLockscreenShortcut.qml</file>
+        <file>ColorPalette/MenuColorPalette.qml</file>
+        <file>ColorPalette/simple/TextInput.qml</file>
+        <file>ColorPalette/simple/skin1/TextInputStyle.qml</file>
+        <file>ColorPalette/simple/skin2/TextInputStyle.qml</file>
     </qresource>
 </RCC>

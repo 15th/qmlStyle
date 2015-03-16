@@ -5,9 +5,10 @@ import QtQuick 2.4
 Item {
     id:colorRoot
 
-    property string __colorType: "blue" //主题颜色
+    property string colorType: "blue" //主题颜色
+    property string skinUrl: "skin1" //皮肤url
 
-    property string __colorComponentUrl: "."+"/ColorTable.qml" //主题URL
+    property string __colorComponentUrl: skinUrl+"/ColorTable.qml" //主题URL
 
     property Component __colorComponent: null
 
@@ -25,8 +26,8 @@ Item {
     function color(type) {
         colorRoot.initComponent()
         try {
-            if (colorRoot.__colorTable[colorRoot.__colorType].hasOwnProperty(type)){
-                return colorRoot.__colorTable[colorRoot.__colorType][type]
+            if (colorRoot.__colorTable[colorRoot.colorType].hasOwnProperty(type)){
+                return colorRoot.__colorTable[colorRoot.colorType][type]
             }else{
                 return "#000000"
             }
