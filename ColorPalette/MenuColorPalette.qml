@@ -35,9 +35,6 @@ Item {
         TextInput {
             title: "姓名"
             text: "狗蛋"
-            onStyleChanged: {
-                console.log("11")
-            }
         }
         TextInput {
             title: "年龄"
@@ -82,7 +79,6 @@ Item {
                 changecolor.forceActiveFocus()
                 index = index+1
                 ColorPalette.colorType = colorSet[ColorPalette.skinUrl][index%2]
-                console.log("skinUrl", ColorPalette.skinUrl)
             }
         }
     }
