@@ -53,3 +53,6 @@ QMAKE_CLEAN += $$GENERATED_RESOURCE_FILE
 #DISTFILES += \
 #    WPTile/WPTile.qml \
 #    WPTile/MenuWPTile.qml
+
+DISTFILES += \
+    WPTile/WPTileStyle.qml
