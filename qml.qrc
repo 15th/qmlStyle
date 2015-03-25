@@ -20,5 +20,7 @@
         <file>ColorPalette/simple/skin2/TextInputStyle.qml</file>
         <file>ColorPalette/simple/skin1/ColorTable.qml</file>
         <file>ColorPalette/simple/skin2/ColorTable.qml</file>
+        <file>Base/Config.qml</file>
+        <file>Base/TextStandard.qml</file>
     </qresource>
 </RCC>
