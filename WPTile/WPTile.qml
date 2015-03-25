@@ -39,6 +39,19 @@ Control {
                 target: rotation
                 properties: "angle"
                 from: flipable.runAngle
+                to: flipable.runAngle-210
+                duration: speedTime*2
+                running: false
+                alwaysRunToEnd: true
+                onStopped: {
+                    swing.start()
+                }
+            }
+            NumberAnimation on angle {
+                id:swing
+                target: rotation
+                properties: "angle"
+                from: flipable.runAngle-210
                 to: flipable.runAngle-180
                 duration: speedTime
                 running: false
