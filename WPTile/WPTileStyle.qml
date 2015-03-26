@@ -5,7 +5,6 @@ import QtQuick.Controls.Private 1.0
 Style {
     id:style
 
-
     property Item back: Rectangle {
         anchors.fill: parent
         color: "red"
@@ -17,6 +16,14 @@ Style {
     }
 
     property Component panel: Item {
+        property bool focusOn: control.activeFocus
+
+        Connections {
+            target: control
+            onSetting: {
+                console.log("123234234")
+            }
+        }
     }
 }
 

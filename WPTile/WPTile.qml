@@ -11,9 +11,15 @@ Control {
 
     property real middleSize: 100 //正常磁贴的大小 小磁贴为1/2*middleSize 大磁贴为2*middleSize
 
-    property bool flipped: false //翻转标志 当该值为true时，开始翻转动画 为false时动画停止
     property real speedTime: 200 //动画速度(ms) 越小越快
-    property real sleepTime: 6000 //翻转间的休息时间(ms)
+    property real sleepTime: 1000 //翻转间的休息时间(ms)
+    property real holdTime: 2000 //按下多久(ms)触发setting
+
+    signal setting() //设置磁贴的信号
+    signal clicked() //点击信号
+
+    property bool __flipped: false //翻转标志 当该值为true时，开始翻转动画 为false时动画停止
+    property bool __setting: false //是否为setting状态 true为setting状态 false为普通状态
 
     Flipable {
         id: flipable
@@ -40,7 +46,7 @@ Control {
                 properties: "angle"
                 from: flipable.runAngle
                 to: flipable.runAngle-210
-                duration: speedTime*2
+                duration: speedTime
                 running: false
                 alwaysRunToEnd: true
                 onStopped: {
@@ -53,11 +59,11 @@ Control {
                 properties: "angle"
                 from: flipable.runAngle-210
                 to: flipable.runAngle-180
-                duration: speedTime
+                duration: speedTime*2
                 running: false
                 alwaysRunToEnd: true
                 onStopped: {
-                    if (flipped) {
+                    if (__flipped) {
                         flipable.isSideA = !flipable.isSideA
                         sleep.start()
                     }
@@ -80,8 +86,37 @@ Control {
         }
     }
 
-    onFlippedChanged: {
-        if (flipped) {
+    MouseArea {
+        anchors.fill: flipable
+        property bool isHold: false //是否触发长时间按下的信号 true触发了 false没触发
+
+        onPressed: {
+            isHold = false
+            root.forceActiveFocus()
+            hold.start()
+        }
+
+        Timer {
+            id: hold
+            running: false
+            interval: holdTime
+            onTriggered: {
+                parent.isHold = true
+                root.__flipped = false
+                root.__setting = true
+                root.setting()
+            }
+        }
+
+        onReleased: {
+            if (!isHold) {
+                root.clicked()
+            }
+        }
+    }
+
+    on__FlippedChanged: {
+        if (__flipped) {
             sleep.start()
         }else{
             run.stop()
@@ -90,8 +125,15 @@ Control {
         }
     }
 
+    onActiveFocusChanged: {
+        if (!activeFocus){
+            root.__setting = false
+            root.__flipped = true
+        }
+    }
+
     Component.onCompleted: {
-        flipped = true
+        __flipped = true
     }
 }
 
