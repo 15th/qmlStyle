@@ -91,9 +91,11 @@ Control {
         property bool isHold: false //是否触发长时间按下的信号 true触发了 false没触发
 
         onPressed: {
-            isHold = false
             root.forceActiveFocus()
-            hold.start()
+            if (!__setting) {
+                isHold = false
+                hold.start()
+            }
         }
 
         Timer {
@@ -109,7 +111,7 @@ Control {
         }
 
         onReleased: {
-            if (!isHold) {
+            if (!__setting && !isHold) {
                 root.clicked()
             }
         }
