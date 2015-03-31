@@ -15,15 +15,21 @@ Style {
         color: "blue"
     }
 
-    property Component panel: Item {
-        property bool focusOn: control.activeFocus
+    property Component deletebutton: Rectangle {
+        width: 50
+        height: 50
+        color: "green"
+    }
 
-        Connections {
-            target: control
-            onSetting: {
-                console.log("123234234")
-            }
-        }
+    property Component panel: Item {
+//        property bool focusOn: control.activeFocus
+
+//        Connections {
+//            target: control
+//            onSetting: {
+//                console.log("123234234")
+//            }
+//        }
     }
 }
 

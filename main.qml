@@ -1,5 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
+import QtQuick.Window 2.0
+import Ths 1.0
 
 //eg.
 import "Base"
@@ -11,8 +13,8 @@ import "./WPTile"
 
 ApplicationWindow {
     title: qsTr("qmlStyle")
-    width: 320
-    height: 480
+    width: Config.isMoblie ? Screen.width : 320
+    height: Config.isMoblie ? Screen.height : 480
     visible: true
 
     LauncherList {

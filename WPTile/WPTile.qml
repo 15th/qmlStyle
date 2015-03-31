@@ -29,8 +29,8 @@ Control {
         property bool isSideA: false //是否是A动画结束触发的timer true为A面触发timer false为B面触发timer
         property real runAngle: 0 //动画运行的角度
 
-        back: __style.back
-        front: __style.front
+        back: __style ? __style.back : undefined
+        front: __style ? __style.front : undefined
 
         transform: Rotation {
             id: rotation
@@ -111,8 +111,23 @@ Control {
         }
 
         onReleased: {
+            hold.stop()
             if (!__setting && !isHold) {
                 root.clicked()
+            }
+        }
+    }
+
+    Loader {
+        anchors.top: parent.top
+        anchors.right: parent.right
+        sourceComponent: __style ? __style.deletebutton : undefined
+
+        MouseArea {
+            id: delbtn
+            anchors.fill: parent
+            onClicked: {
+                console.log("papapapa")
             }
         }
     }
