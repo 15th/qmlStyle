@@ -1,4 +1,4 @@
-import QtQuick 2.4
+import QtQuick 2.5
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Private 1.0
 
@@ -15,6 +15,8 @@ Control {
     property real sleepTime: 1000 //翻转间的休息时间(ms)
     property real holdTime: 2000 //按下多久(ms)触发setting
 
+    readonly property bool flipped: __flipped //只读 当前磁铁的是否能翻转的状态 当该值为true时，开始翻转动画 为false时动画停止
+
     signal setting() //设置磁贴的信号
     signal clicked() //点击信号
 
@@ -26,7 +28,6 @@ Control {
 
         width: middleSize
         height: middleSize
-        property bool isSideA: false //是否是A动画结束触发的timer true为A面触发timer false为B面触发timer
         property real runAngle: 0 //动画运行的角度
 
         back: __style ? __style.back : undefined
@@ -64,7 +65,6 @@ Control {
                 alwaysRunToEnd: true
                 onStopped: {
                     if (__flipped) {
-                        flipable.isSideA = !flipable.isSideA
                         sleep.start()
                     }
                 }
@@ -76,7 +76,7 @@ Control {
             running:false
             interval:sleepTime
             onTriggered: {
-                if (flipable.isSideA) {
+                if (flipable.side===Flipable.Back) {
                     flipable.runAngle = flipable.runAngle-180
                 }else {
                     flipable.runAngle = 0
@@ -104,8 +104,8 @@ Control {
             interval: holdTime
             onTriggered: {
                 parent.isHold = true
-                root.__flipped = false
-                root.__setting = true
+                __flipped = false
+                __setting = true
                 root.setting()
             }
         }
@@ -119,38 +119,55 @@ Control {
     }
 
     Loader {
+        id: delbtn
         anchors.top: parent.top
         anchors.right: parent.right
         sourceComponent: __style ? __style.deletebutton : undefined
+        visible: false
 
         MouseArea {
-            id: delbtn
             anchors.fill: parent
             onClicked: {
                 console.log("papapapa")
+                root.visible = false
             }
         }
     }
 
     on__FlippedChanged: {
         if (__flipped) {
+            console.log("im running...")
             sleep.start()
         }else{
+            console.log("im stopped...")
             run.stop()
             sleep.stop()
-            flipable.isSideA = false
+            delbtn.visible = true
         }
     }
 
     onActiveFocusChanged: {
         if (!activeFocus){
-            root.__setting = false
-            root.__flipped = true
+            __setting = false
+            __flipped = true
         }
     }
 
     Component.onCompleted: {
         __flipped = true
+    }
+
+    function beginFlip() {
+        //触发开始翻转方法
+        delbtn.visible = false
+        __flipped = true
+        __setting = false
+    }
+
+    function reset() {
+        //pin到桌面（恢复）方法
+        root.visible = true
+        beginFlip()
     }
 }
 
