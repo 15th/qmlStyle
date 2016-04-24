@@ -10,6 +10,7 @@ Control {
     style: Qt.createComponent("WPTileStyle.qml", root)
 
     property real middleSize: 100 //正常磁贴的大小 小磁贴为1/2*middleSize 大磁贴为2*middleSize
+    property real minification: 0.8 //编辑状态下，非选中磁贴缩小至大小
 
     property real speedTime: 200 //动画速度(ms) 越小越快
     property real sleepTime: 1000 //翻转间的休息时间(ms)

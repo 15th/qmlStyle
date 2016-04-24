@@ -25,6 +25,7 @@ ApplicationWindow {
             addExample("IOS-RadioButton", "仿照ios开关按钮效果", Qt.resolvedUrl("IOS-RadioButton/MenuRadioButton.qml"))
             addExample("LockscreenShortcut", "仿小米锁屏4界面方向快捷键", Qt.resolvedUrl("LockscreenShortcut/MenuLockscreenShortcut.qml"))
             addExample("WPTile", "WP风格磁贴实现", Qt.resolvedUrl("WPTile/MenuWPTile.qml"))
+            addExample("Vertical-ScrollBar", "实现一个竖向滚轮吧", Qt.resolvedUrl("Vertical-ScrollBar/MenuVerticalScrollBar.qml"))
         }
     }
 }

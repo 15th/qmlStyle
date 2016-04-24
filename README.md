@@ -24,5 +24,7 @@ clone下来后，用qt creator打开qmlStyle.pro文件。然后run一下，就�
  - **ColorPalette** 对于又可以换肤，每种皮肤下又可换多种颜色的一种实现策略 [-read more](http://o3or.com/archives/313/ "控件详细说明")
  - **IOS-RadioButton** 仿照ios开关按钮效果 [-read more](http://o3or.com/archives/303/ "控件详细说明")
  - **LockscreenShortcut** 仿小米锁屏4界面方向快捷键 [-read more](# "暂无详细信息")
+ - **WPTile** WP风格磁贴实现 (未完成)
+ - **Vertical-ScrollBar** 实现一个竖向滚轮吧(未完成)
 
 [The MIT License (MIT)](LICENSE "MIT")
