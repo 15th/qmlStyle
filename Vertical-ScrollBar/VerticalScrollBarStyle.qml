@@ -20,13 +20,10 @@ Style {
         Rectangle {
             width: parent.width-4
             height: parent.height-4
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.topMargin: 2
-            anchors.bottomMargin: 2
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.horizontalCenterOffset: 0.5
-            color: "#999999"
+            anchors.verticalCenter: parent.verticalCenter
+            color: control.__dragScroll? "#777777" : "#bbbbbb"
             radius: width
         }
     }

@@ -1,4 +1,4 @@
-import QtQuick 2.4
+import QtQuick 2.6
 import QtQuick.Controls 1.4
 import "./"
 
@@ -22,6 +22,8 @@ Item {
             id: content
             anchors.fill: parent
             contentHeight: words.contentHeight
+            boundsBehavior: Flickable.StopAtBounds
+            interactive: false
             clip: true
 
             Text {
@@ -31,7 +33,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.topMargin: 5
-                anchors.bottomMargin: 5
+                anchors.bottomMargin: anchors.topMargin
                 anchors.leftMargin: 10
                 anchors.rightMargin: 10
                 lineHeight: 1.5
@@ -99,12 +101,15 @@ At next bird assizes."
             }
         }
         VerticalScrollBar {
+            id: scrollbar
             height: content.height-2
             anchors.right: content.right
             anchors.rightMargin: 1
             anchors.verticalCenter: content.verticalCenter
 
+            handleItem: content
             size: content.visibleArea.heightRatio * content.height
+            position: content.visibleArea.yPosition * content.height-1
         }
     }
 }
