@@ -98,5 +98,13 @@ The Sparrow's for trial,
 At next bird assizes."
             }
         }
+        VerticalScrollBar {
+            height: content.height-2
+            anchors.right: content.right
+            anchors.rightMargin: 1
+            anchors.verticalCenter: content.verticalCenter
+
+            size: content.visibleArea.heightRatio * content.height
+        }
     }
 }

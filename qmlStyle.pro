@@ -57,4 +57,5 @@ QMAKE_CLEAN += $$GENERATED_RESOURCE_FILE
 DISTFILES += \
     WPTile/WPTileStyle.qml \
     Vertical-ScrollBar/MenuVerticalScrollBar.qml \
-    Vertical-ScrollBar/VerticalScrollBar.qml
+    Vertical-ScrollBar/VerticalScrollBar.qml \
+    Vertical-ScrollBar/VerticalScrollBarStyle.qml
