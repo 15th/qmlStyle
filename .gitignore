@@ -29,6 +29,7 @@ Makefile*
 # QtCtreator Qml
 *.qmlproject.user
 *.qmlproject.user.*
+*qml.qrc
 
 # mac files
 *.DS_Store
